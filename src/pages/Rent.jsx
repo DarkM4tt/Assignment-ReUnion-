@@ -1,56 +1,45 @@
 import React, { useState } from "react";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import { listings } from "../data";
 import ListingItem from "../components/ListingItem";
+import listings from "./../data";
 
 const Rent = () => {
-  const [locationFilter, setLocationFilter] = useState("");
-  const [dateFilter, setDateFilter] = useState("");
-  const [priceFilter, setPriceFilter] = useState("");
-  const [propertyTypeFilter, setPropertyTypeFilter] = useState("");
+  const [location, setLocation] = useState("");
+  const [moveInDate, setMoveInDate] = useState("");
+  const [priceRange, setPriceRange] = useState("");
+  const [propertyType, setPropertyType] = useState("");
+  const [filteredListings, setFilteredListings] = useState([]);
+  const [isFiltered, setIsFiltered] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleFilter = (e) => {
     e.preventDefault();
-    listings = listings.filter((listing) => {
-      return listing.location
-        .toLowerCase()
-        .includes(locationFilter.toLowerCase());
+    const filteredListings = listings.filter((listing) => {
+      if (
+        location &&
+        !listing.location.toLowerCase().includes(location.toLowerCase())
+      ) {
+        return false;
+      }
+
+      if (moveInDate && listing.when !== moveInDate) {
+        return false;
+      }
+
+      if (propertyType && listing.propertyType !== propertyType) {
+        return false;
+      }
+
+      if (priceRange) {
+        const [min, max] = priceRange.split("-");
+        if (listing.price <= min || listing.price >= max) {
+          return false;
+        }
+      }
+      return true;
     });
+    setFilteredListings(filteredListings);
+    setIsFiltered(true);
   };
-
-  const handleLocationChange = (e) => {
-    setLocationFilter(e.target.value);
-  };
-
-  const handleDateChange = (e) => {
-    setDateFilter(e.target.value);
-  };
-
-  const handlePriceChange = (e) => {
-    setPriceFilter(e.target.value);
-  };
-
-  const handlePropertyTypeChange = (e) => {
-    setPropertyTypeFilter(e.target.value);
-  };
-
-  // const filteredListings = listings.filter((listing) => {
-  //   return (
-  //     listing.location.toLowerCase().includes(locationFilter.toLowerCase()) &&
-  //     listing.moveInDate.includes(dateFilter) &&
-  //     listing.price >= priceFilter.min &&
-  //     listing.price <= priceFilter.max &&
-  //     listing.propertyType
-  //       .toLowerCase()
-  //       .includes(propertyTypeFilter.toLowerCase())
-  //   );
-  // });
-
-  console.log("Data Location: " + listings);
-  console.log("Location: " + locationFilter);
-  console.log("Date Filter: " + dateFilter);
-  console.log("Price: " + priceFilter);
-  console.log("Property: " + propertyTypeFilter);
 
   return (
     <div className="App w-full h-96 max-w-5xl justify-between mx-auto">
@@ -71,15 +60,15 @@ const Rent = () => {
 
       {/* Filtering Divs */}
       <form
-        onSubmit={handleSubmit}
+        onSubmit={handleFilter}
         className="flex items-center justify-center bg-white  mb-7 px-6 py-6 rounded space-x-5"
       >
         <label className="text-gray-500 w-full border-r-2">
           Location
           <input
             type="text"
-            value={locationFilter}
-            onChange={handleLocationChange}
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
             className=" block w-full font-semibold text-black outline-none"
           />
         </label>
@@ -88,8 +77,8 @@ const Rent = () => {
           <input
             type="date"
             placeholder="Select"
-            value={dateFilter}
-            onChange={handleDateChange}
+            value={moveInDate}
+            onChange={(e) => setMoveInDate(e.target.value)}
             className="block w-full font-semibold text-black outline-none pr-2"
           />
         </label>
@@ -98,9 +87,10 @@ const Rent = () => {
           <select
             className="w-full block font-semibold text-black outline-none pr-2"
             id="price-filter"
-            value={priceFilter}
-            onChange={handlePriceChange}
+            value={priceRange}
+            onChange={(e) => setPriceRange(e.target.value)}
           >
+            <option value="">Select price range</option>
             <option value="8000-10000">₹8,000 - ₹10,000</option>
             <option value="10000-12000">₹10,000 - ₹12,000</option>
             <option value="12000-15000">₹12,000 - ₹15,000</option>
@@ -113,8 +103,8 @@ const Rent = () => {
           <select
             className="w-full block font-semibold text-black outline-none"
             id="price-filter"
-            value={propertyTypeFilter}
-            onChange={handlePropertyTypeChange}
+            value={propertyType}
+            onChange={(e) => setPropertyType(e.target.value)}
           >
             <option value="Houses">Houses</option>
             <option value="Apartments">Apartments</option>
@@ -127,6 +117,7 @@ const Rent = () => {
         </label>
         <button
           type="submit"
+          onClick={handleFilter}
           className="bg-indigo-600 text-white font-semibold py-3 px-7 mt-1 rounded"
         >
           Search
@@ -136,9 +127,14 @@ const Rent = () => {
       {/* Listings */}
       <main>
         <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3">
-          {listings.map((listing) => (
-            <ListingItem key={listing.id} listing={listing} />
-          ))}
+          {isFiltered &&
+            filteredListings.map((listing) => (
+              <ListingItem key={listing.id} listing={listing} />
+            ))}
+          {!isFiltered &&
+            listings.map((listing) => (
+              <ListingItem key={listing.id} listing={listing} />
+            ))}
         </ul>
       </main>
     </div>

@@ -1,189 +1,93 @@
-export const listings = [
-  {
-    id: 1,
-    imgURL: "https://picsum.photos/500/300?random=1",
-    price: 1200,
-    name: "Luxury Apartment",
-    location: "Delhi",
-    bedrooms: 3,
-    bathrooms: 2,
-    area: "8x7 m²",
-    when: "2022-03-01T09:00:00Z",
-  },
-  {
-    id: 2,
-    imgURL: "https://picsum.photos/500/300?random=2",
-    price: 1600,
-    name: "Shining Apartment",
-    location: "Chennai",
-    bedrooms: 4,
-    bathrooms: 2,
-    area: "7x7 m²",
-    when: "2021-06-01T09:00:00Z",
-  },
-  {
-    id: 3,
-    imgURL: "https://picsum.photos/500/300?random=3",
-    price: 1300,
-    name: "Galaxy Apartment",
-    location: "Banglore",
-    bedrooms: 2,
-    bathrooms: 3,
-    area: "6x7.5 m²",
-    when: "2022-06-24T09:00:00Z",
-  },
-  {
-    id: 4,
-    imgURL: "https://picsum.photos/500/300?random=4",
-    price: 1300,
-    name: "Galaxy Apartment",
-    location: "Banglore",
-    bedrooms: 2,
-    bathrooms: 3,
-    area: "6x7.5 m²",
-    when: "2022-06-24T09:00:00Z",
-  },
-  {
-    id: 5,
-    imgURL: "https://picsum.photos/500/300?random=5",
-    price: 1300,
-    name: "Galaxy Apartment",
-    location: "Banglore",
-    bedrooms: 2,
-    bathrooms: 3,
-    area: "6x7.5 m²",
-    when: "2022-06-24T09:00:00Z",
-  },
-  {
-    id: 6,
-    imgURL: "https://picsum.photos/500/300?random=6",
-    price: 1300,
-    name: "Galaxy Apartment",
-    location: "Banglore",
-    bedrooms: 2,
-    bathrooms: 3,
-    area: "6x7.5 m²",
-    when: "2022-06-24T09:00:00Z",
-  },
-  {
-    id: 7,
-    imgURL: "https://picsum.photos/500/300?random=7",
-    price: 1300,
-    name: "Galaxy Apartment",
-    location: "Banglore",
-    bedrooms: 2,
-    bathrooms: 3,
-    area: "6x7.5 m²",
-    when: "2022-06-24T09:00:00Z",
-  },
-  {
-    id: 8,
-    imgURL: "https://picsum.photos/500/300?random=8",
-    price: 1300,
-    name: "Galaxy Apartment",
-    location: "Banglore",
-    bedrooms: 2,
-    bathrooms: 3,
-    area: "6x7.5 m²",
-    when: "2022-06-24T09:00:00Z",
-  },
-  {
-    id: 9,
-    imgURL: "https://picsum.photos/500/300?random=9",
-    price: 1300,
-    name: "Galaxy Apartment",
-    location: "Banglore",
-    bedrooms: 2,
-    bathrooms: 3,
-    area: "6x7.5 m²",
-    when: "2022-06-24T09:00:00Z",
-  },
-  {
-    id: 10,
-    imgURL: "https://picsum.photos/500/300?random=10",
-    price: 1300,
-    name: "Galaxy Apartment",
-    location: "Banglore",
-    bedrooms: 2,
-    bathrooms: 3,
-    area: "6x7.5 m²",
-    when: "2022-06-24T09:00:00Z",
-  },
-  {
-    id: 11,
-    imgURL: "https://picsum.photos/500/300?random=11",
-    price: 1300,
-    name: "Galaxy Apartment",
-    location: "Banglore",
-    bedrooms: 2,
-    bathrooms: 3,
-    area: "6x7.5 m²",
-    when: "2022-06-24T09:00:00Z",
-  },
-  {
-    id: 12,
-    imgURL: "https://picsum.photos/500/300?random=12",
-    price: 1300,
-    name: "Galaxy Apartment",
-    location: "Banglore",
-    bedrooms: 2,
-    bathrooms: 3,
-    area: "6x7.5 m²",
-    when: "2022-06-24T09:00:00Z",
-  },
-  {
-    id: 13,
-    imgURL: "https://picsum.photos/500/300?random=13",
-    price: 1300,
-    name: "Galaxy Apartment",
-    location: "Banglore",
-    bedrooms: 2,
-    bathrooms: 3,
-    area: "6x7.5 m²",
-    when: "2022-06-24T09:00:00Z",
-  },
-  {
-    id: 14,
-    imgURL: "https://picsum.photos/500/300?random=14",
-    price: 1300,
-    name: "Galaxy Apartment",
-    location: "Banglore",
-    bedrooms: 2,
-    bathrooms: 3,
-    area: "6x7.5 m²",
-    when: "2022-06-24T09:00:00Z",
-  },
-  {
-    id: 15,
-    imgURL: "https://picsum.photos/500/300?random=15",
-    price: 1300,
-    name: "Galaxy Apartment",
-    location: "Banglore",
-    bedrooms: 2,
-    bathrooms: 3,
-    area: "6x7.5 m²",
-    when: "2022-06-24T09:00:00Z",
-  },
-  {
-    id: 16,
-    imgURL: "https://picsum.photos/500/300?random=16",
-    price: 1300,
-    name: "Galaxy Apartment",
-    location: "Banglore",
-    bedrooms: 2,
-    bathrooms: 3,
-    area: "6x7.5 m²",
-    when: "2022-06-24T09:00:00Z",
-  },
-  {
-    id: 17,
-    imgURL: "https://picsum.photos/500/300?random=17",
-    price: 1300,
-    name: "Galaxy Apartment",
-    location: "Banglore",
-    bedrooms: 2,
-    bathrooms: 3,
-    area: "6x7.5 m²",
-    when: "2022-06-24T09:00:00Z",
-  },
-];
+const listings = [];
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function getRandomDate() {
+  const minDate = new Date("2023-02-01");
+  const maxDate = new Date("2023-02-28");
+  const randomTimestamp =
+    minDate.getTime() + Math.random() * (maxDate.getTime() - minDate.getTime());
+  const randomDate = new Date(randomTimestamp);
+  const formattedDate = `${randomDate.getFullYear()}-${(
+    randomDate.getMonth() + 1
+  )
+    .toString()
+    .padStart(2, "0")}-${randomDate.getDate().toString().padStart(2, "0")}`;
+  return formattedDate;
+}
+
+function getRandomPropertyType() {
+  const propertyTypes = [
+    "Apartments",
+    "Houses",
+    "Townhouse",
+    "Duplex",
+    "Studio",
+    "Loft",
+    "Condominium",
+  ];
+  return propertyTypes[getRandomInt(propertyTypes.length)];
+}
+
+function getRandomImageURL() {
+  const random = getRandomInt(100);
+  return `https://source.unsplash.com/1600x900/?house=${random}`;
+}
+
+for (let i = 0; i < 500; i++) {
+  const id = i + 1;
+  const imgURL = getRandomImageURL();
+  const price = getRandomInt(12001) + 8000; // Random price between 8000 and 20000
+  const name = `Listing ${id}`;
+  const location = [
+    "Andhra Pradesh",
+    "Arunachal Pradesh",
+    "Assam",
+    "Bihar",
+    "Chhattisgarh",
+    "Goa",
+    "Gujarat",
+    "Haryana",
+    "Himachal Pradesh",
+    "Jharkhand",
+    "Karnataka",
+    "Kerala",
+    "Madhya Pradesh",
+    "Maharashtra",
+    "Manipur",
+    "Meghalaya",
+    "Mizoram",
+    "Nagaland",
+    "Odisha",
+    "Punjab",
+    "Rajasthan",
+    "Sikkim",
+    "Tamil Nadu",
+    "Telangana",
+    "Tripura",
+    "Uttar Pradesh",
+    "Uttarakhand",
+    "West Bengal",
+  ][getRandomInt(28)];
+  const bedrooms = getRandomInt(5) + 1;
+  const bathrooms = getRandomInt(7) + 1;
+  const area = `${getRandomInt(10)}x${getRandomInt(10)} m²`;
+  const when = getRandomDate();
+  const propertyType = getRandomPropertyType();
+  listings.push({
+    id,
+    imgURL,
+    price,
+    name,
+    location,
+    bedrooms,
+    bathrooms,
+    area,
+    when,
+    propertyType,
+  });
+}
+
+export default listings;
