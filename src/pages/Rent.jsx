@@ -1,9 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { listings } from "../data";
 import ListingItem from "../components/ListingItem";
 
 const Rent = () => {
+  const [locationFilter, setLocationFilter] = useState("");
+  const [dateFilter, setDateFilter] = useState("");
+  const [priceFilter, setPriceFilter] = useState("");
+  const [propertyTypeFilter, setPropertyTypeFilter] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    listings = listings.filter((listing) => {
+      return listing.location
+        .toLowerCase()
+        .includes(locationFilter.toLowerCase());
+    });
+  };
+
+  const handleLocationChange = (e) => {
+    setLocationFilter(e.target.value);
+  };
+
+  const handleDateChange = (e) => {
+    setDateFilter(e.target.value);
+  };
+
+  const handlePriceChange = (e) => {
+    setPriceFilter(e.target.value);
+  };
+
+  const handlePropertyTypeChange = (e) => {
+    setPropertyTypeFilter(e.target.value);
+  };
+
+  // const filteredListings = listings.filter((listing) => {
+  //   return (
+  //     listing.location.toLowerCase().includes(locationFilter.toLowerCase()) &&
+  //     listing.moveInDate.includes(dateFilter) &&
+  //     listing.price >= priceFilter.min &&
+  //     listing.price <= priceFilter.max &&
+  //     listing.propertyType
+  //       .toLowerCase()
+  //       .includes(propertyTypeFilter.toLowerCase())
+  //   );
+  // });
+
+  console.log("Data Location: " + listings);
+  console.log("Location: " + locationFilter);
+  console.log("Date Filter: " + dateFilter);
+  console.log("Price: " + priceFilter);
+  console.log("Property: " + propertyTypeFilter);
+
   return (
     <div className="App w-full h-96 max-w-5xl justify-between mx-auto">
       {/* Heading and Search Input */}
@@ -22,12 +70,16 @@ const Rent = () => {
       </div>
 
       {/* Filtering Divs */}
-      <form className="flex items-center justify-center bg-white  mb-7 px-6 py-6 rounded space-x-5">
+      <form
+        onSubmit={handleSubmit}
+        className="flex items-center justify-center bg-white  mb-7 px-6 py-6 rounded space-x-5"
+      >
         <label className="text-gray-500 w-full border-r-2">
           Location
           <input
             type="text"
-            defaultValue="New York, USA"
+            value={locationFilter}
+            onChange={handleLocationChange}
             className=" block w-full font-semibold text-black outline-none"
           />
         </label>
@@ -36,6 +88,8 @@ const Rent = () => {
           <input
             type="date"
             placeholder="Select"
+            value={dateFilter}
+            onChange={handleDateChange}
             className="block w-full font-semibold text-black outline-none pr-2"
           />
         </label>
@@ -44,6 +98,8 @@ const Rent = () => {
           <select
             className="w-full block font-semibold text-black outline-none pr-2"
             id="price-filter"
+            value={priceFilter}
+            onChange={handlePriceChange}
           >
             <option value="8000-10000">₹8,000 - ₹10,000</option>
             <option value="10000-12000">₹10,000 - ₹12,000</option>
@@ -57,14 +113,16 @@ const Rent = () => {
           <select
             className="w-full block font-semibold text-black outline-none"
             id="price-filter"
+            value={propertyTypeFilter}
+            onChange={handlePropertyTypeChange}
           >
-            <option value="">Houses</option>
-            <option value="0-10">Apartments</option>
-            <option value="10-20">Duplex</option>
-            <option value="20-30">Studio</option>
-            <option value="30-40">Loft</option>
-            <option value="40-50">Condominium</option>
-            <option value="50+">Townhouse</option>
+            <option value="Houses">Houses</option>
+            <option value="Apartments">Apartments</option>
+            <option value="Duplex">Duplex</option>
+            <option value="Studio">Studio</option>
+            <option value="Loft">Loft</option>
+            <option value="Condominium">Condominium</option>
+            <option value="Townhouse">Townhouse</option>
           </select>
         </label>
         <button
