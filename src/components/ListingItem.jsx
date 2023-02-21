@@ -24,7 +24,7 @@ const ListingItem = ({ listing }) => {
         </p>
         <p className="font-bold text-xl truncate">
           {listing.name}{" "}
-          <TbHeart className="cursor-pointer inline text-indigo-600 ml-20 w-7 h-7 border border-gray-400 rounded-full py-1" />
+          <TbHeart className="cursor-pointer inline text-indigo-600 ml-40 w-7 h-7 border border-gray-400 rounded-full py-1" />
         </p>
         <div className="flex items-center space-x-1 border-b-2">
           <p className="font-semibold text-sm my-2 text-gray-500 truncate">
