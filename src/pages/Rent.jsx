@@ -120,7 +120,7 @@ const Rent = () => {
           onClick={handleFilter}
           className="bg-indigo-600 text-white font-semibold py-3 px-7 mt-1 rounded"
         >
-          Search
+          Search Here
         </button>
       </form>
 
